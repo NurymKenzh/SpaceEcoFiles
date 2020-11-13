@@ -1,4 +1,7 @@
 ﻿<!DOCTYPE html>
+@using SpaceEcoFiles.Controllers
+@using Microsoft.Extensions.Localization
+@inject IStringLocalizer<SharedResources> SharedLocalizer
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -20,7 +23,7 @@
                     <partial name="_LoginPartial" />
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">@SharedLocalizer["Home"]</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
@@ -38,7 +41,8 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2020 - SpaceEcoFiles - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; @DateTime.Now.Year.ToString() - SpaceEcoFiles - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            @await Html.PartialAsync("_SelectLanguagePartial")
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
