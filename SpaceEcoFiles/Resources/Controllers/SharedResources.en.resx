@@ -117,7 +117,94 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ChangePassword" xml:space="preserve">
+    <value>Change password</value>
+  </data>
+  <data name="ChangeYourAccountSettings" xml:space="preserve">
+    <value>Change your account settings</value>
+  </data>
+  <data name="ConfirmNewPassword" xml:space="preserve">
+    <value>Confirm new password</value>
+  </data>
+  <data name="ConfirmPassword" xml:space="preserve">
+    <value>Confirm password</value>
+  </data>
+  <data name="CreateANewAccount" xml:space="preserve">
+    <value>Create a new account.</value>
+  </data>
+  <data name="CurrentPassword" xml:space="preserve">
+    <value>Current password</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="ForgotYourPassword" xml:space="preserve">
+    <value>Forgot your password?</value>
+  </data>
   <data name="Home" xml:space="preserve">
     <value>Home</value>
+  </data>
+  <data name="IncorrectPassword" xml:space="preserve">
+    <value>Incorrect password.</value>
+  </data>
+  <data name="InvalidLoginAttempt" xml:space="preserve">
+    <value>Invalid login attempt.</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>Language</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="Logout" xml:space="preserve">
+    <value>Logout</value>
+  </data>
+  <data name="ManageYourAccount" xml:space="preserve">
+    <value>Manage your account</value>
+  </data>
+  <data name="NewPassword" xml:space="preserve">
+    <value>New password</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="Profile" xml:space="preserve">
+    <value>Profile</value>
+  </data>
+  <data name="Register" xml:space="preserve">
+    <value>Register</value>
+  </data>
+  <data name="RegisterAsANewUser" xml:space="preserve">
+    <value>Register as a new user</value>
+  </data>
+  <data name="RememberMe" xml:space="preserve">
+    <value>Remember me?</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="The0MustBeAtLeast2AndAtMax1CharactersLong" xml:space="preserve">
+    <value>The {0} must be at least {2} and at max {1} characters long.</value>
+  </data>
+  <data name="TheFieldIsNotAValidEmailAddress" xml:space="preserve">
+    <value>The {0} field is not a valid e-mail address.</value>
+  </data>
+  <data name="TheFieldIsRequired" xml:space="preserve">
+    <value>The {0} field is required.</value>
+  </data>
+  <data name="ThePasswordAndConfirmationPasswordDoNotMatch" xml:space="preserve">
+    <value>The password and confirmation password do not match.</value>
+  </data>
+  <data name="UpdatePassword" xml:space="preserve">
+    <value>Update password</value>
+  </data>
+  <data name="UseALocalAccountToLogIn" xml:space="preserve">
+    <value>Use a local account to log in.</value>
+  </data>
+  <data name="UserNameIsAlreadyTaken" xml:space="preserve">
+    <value>User name {0} is already taken.</value>
+  </data>
+  <data name="YourPasswordHasBeenChanged" xml:space="preserve">
+    <value>Your password has been changed.</value>
   </data>
 </root>

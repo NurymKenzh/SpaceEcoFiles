@@ -11,6 +11,8 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Localization;
+using SpaceEcoFiles.Controllers;
 
 namespace SpaceEcoFiles.Areas.Identity.Pages.Account
 {
@@ -20,14 +22,17 @@ namespace SpaceEcoFiles.Areas.Identity.Pages.Account
         private readonly UserManager<IdentityUser> _userManager;
         private readonly SignInManager<IdentityUser> _signInManager;
         private readonly ILogger<LoginModel> _logger;
+        private readonly IStringLocalizer<SharedResources> _sharedLocalizer;
 
         public LoginModel(SignInManager<IdentityUser> signInManager, 
             ILogger<LoginModel> logger,
-            UserManager<IdentityUser> userManager)
+            UserManager<IdentityUser> userManager,
+            IStringLocalizer<SharedResources> sharedLocalizer)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _logger = logger;
+            _sharedLocalizer = sharedLocalizer;
         }
 
         [BindProperty]
@@ -42,15 +47,17 @@ namespace SpaceEcoFiles.Areas.Identity.Pages.Account
 
         public class InputModel
         {
-            [Required]
-            [EmailAddress]
+            [Required(ErrorMessageResourceType = typeof(Resources.Controllers.SharedResources), ErrorMessageResourceName = "TheFieldIsRequired")]
+            [EmailAddress(ErrorMessageResourceType = typeof(Resources.Controllers.SharedResources), ErrorMessageResourceName = "TheFieldIsNotAValidEmailAddress")]
+            [Display(ResourceType = typeof(Resources.Controllers.SharedResources), Name = "Email")]
             public string Email { get; set; }
 
-            [Required]
+            [Required(ErrorMessageResourceType = typeof(Resources.Controllers.SharedResources), ErrorMessageResourceName = "TheFieldIsRequired")]
             [DataType(DataType.Password)]
+            [Display(ResourceType = typeof(Resources.Controllers.SharedResources), Name = "Password")]
             public string Password { get; set; }
 
-            [Display(Name = "Remember me?")]
+            [Display(ResourceType = typeof(Resources.Controllers.SharedResources), Name = "RememberMe")]
             public bool RememberMe { get; set; }
         }
 
@@ -96,7 +103,7 @@ namespace SpaceEcoFiles.Areas.Identity.Pages.Account
                 }
                 else
                 {
-                    ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+                    ModelState.AddModelError(string.Empty, _sharedLocalizer["InvalidLoginAttempt"]);
                     return Page();
                 }
             }

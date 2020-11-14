@@ -22,6 +22,7 @@ namespace SpaceEcoFiles.Areas.Identity.Pages.Account.Manage
             _signInManager = signInManager;
         }
 
+        [Display(ResourceType = typeof(Resources.Controllers.SharedResources), Name = "Email")]
         public string Username { get; set; }
 
         [TempData]

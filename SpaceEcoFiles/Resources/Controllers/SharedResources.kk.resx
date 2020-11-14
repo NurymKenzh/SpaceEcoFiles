@@ -117,7 +117,94 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ChangePassword" xml:space="preserve">
+    <value>Құпия сөзді өзгерту</value>
+  </data>
+  <data name="ChangeYourAccountSettings" xml:space="preserve">
+    <value>Тіркелгі параметрлерін өзгертіңіз</value>
+  </data>
+  <data name="ConfirmNewPassword" xml:space="preserve">
+    <value>Жаңа құпиясөзді растаңыз</value>
+  </data>
+  <data name="ConfirmPassword" xml:space="preserve">
+    <value>Құпия сөзді Растау</value>
+  </data>
+  <data name="CreateANewAccount" xml:space="preserve">
+    <value>Жаңа тіркелгі жасаңыз.</value>
+  </data>
+  <data name="CurrentPassword" xml:space="preserve">
+    <value>Ағымдағы Құпия сөз</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>Электрондық пошта</value>
+  </data>
+  <data name="ForgotYourPassword" xml:space="preserve">
+    <value>Құпия сөзіңізді ұмыттыңыз ба?</value>
+  </data>
   <data name="Home" xml:space="preserve">
     <value>Үй</value>
+  </data>
+  <data name="IncorrectPassword" xml:space="preserve">
+    <value>Қате құпиясөз.</value>
+  </data>
+  <data name="InvalidLoginAttempt" xml:space="preserve">
+    <value>Кіру әрекеті жарамсыз.</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>Тіл</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>Кіру</value>
+  </data>
+  <data name="Logout" xml:space="preserve">
+    <value>Шығу</value>
+  </data>
+  <data name="ManageYourAccount" xml:space="preserve">
+    <value>Тіркелгіңізді басқарыңыз</value>
+  </data>
+  <data name="NewPassword" xml:space="preserve">
+    <value>Жаңа құпия сөз</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Пароль</value>
+  </data>
+  <data name="Profile" xml:space="preserve">
+    <value>Профиль</value>
+  </data>
+  <data name="Register" xml:space="preserve">
+    <value>Тіркеу</value>
+  </data>
+  <data name="RegisterAsANewUser" xml:space="preserve">
+    <value>Жаңа пайдаланушы ретінде тіркеліңіз</value>
+  </data>
+  <data name="RememberMe" xml:space="preserve">
+    <value>Мені есте сақтау?</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Сақтау</value>
+  </data>
+  <data name="The0MustBeAtLeast2AndAtMax1CharactersLong" xml:space="preserve">
+    <value>{0} кемінде {2} және максимум {1} таңбадан тұруы керек.</value>
+  </data>
+  <data name="TheFieldIsNotAValidEmailAddress" xml:space="preserve">
+    <value>{0} өрісі жарамды электрондық пошта мекенжайы емес.</value>
+  </data>
+  <data name="TheFieldIsRequired" xml:space="preserve">
+    <value>{0} өрісі міндетті.</value>
+  </data>
+  <data name="ThePasswordAndConfirmationPasswordDoNotMatch" xml:space="preserve">
+    <value>Құпия сөз және растау паролі сәйкес келмейді.</value>
+  </data>
+  <data name="UpdatePassword" xml:space="preserve">
+    <value>Парольді жаңартыңыз</value>
+  </data>
+  <data name="UseALocalAccountToLogIn" xml:space="preserve">
+    <value>Кіру үшін жергілікті есептік жазбаны пайдаланыңыз.</value>
+  </data>
+  <data name="UserNameIsAlreadyTaken" xml:space="preserve">
+    <value>{0} пайдаланушы аты алынған.</value>
+  </data>
+  <data name="YourPasswordHasBeenChanged" xml:space="preserve">
+    <value>Сіздің пароліңіз өзгертілді.</value>
   </data>
 </root>
