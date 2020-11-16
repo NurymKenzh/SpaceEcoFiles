@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using SpaceEcoFiles.Models;
 
 namespace SpaceEcoFiles.Data
 {
@@ -12,5 +13,6 @@ namespace SpaceEcoFiles.Data
             : base(options)
         {
         }
+        public DbSet<SpaceEcoFiles.Models.DocType> DocType { get; set; }
     }
 }

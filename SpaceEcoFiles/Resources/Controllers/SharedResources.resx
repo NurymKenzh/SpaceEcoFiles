@@ -135,10 +135,28 @@
   <data name="ConfirmPassword" xml:space="preserve">
     <value />
   </data>
+  <data name="Create" xml:space="preserve">
+    <value />
+  </data>
   <data name="CreateANewAccount" xml:space="preserve">
     <value />
   </data>
+  <data name="CreateNew" xml:space="preserve">
+    <value />
+  </data>
   <data name="CurrentPassword" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Details" xml:space="preserve">
+    <value />
+  </data>
+  <data name="DocType" xml:space="preserve">
+    <value />
+  </data>
+  <data name="DocTypes" xml:space="preserve">
     <value />
   </data>
   <data name="Edit" xml:space="preserve">
@@ -172,6 +190,18 @@
     <value />
   </data>
   <data name="ManageYourAccount" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value />
+  </data>
+  <data name="NameEN" xml:space="preserve">
+    <value />
+  </data>
+  <data name="NameKK" xml:space="preserve">
+    <value />
+  </data>
+  <data name="NameRU" xml:space="preserve">
     <value />
   </data>
   <data name="NewPassword" xml:space="preserve">

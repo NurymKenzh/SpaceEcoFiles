@@ -135,11 +135,29 @@
   <data name="ConfirmPassword" xml:space="preserve">
     <value>Құпия сөзді Растау</value>
   </data>
+  <data name="Create" xml:space="preserve">
+    <value>Жасау</value>
+  </data>
   <data name="CreateANewAccount" xml:space="preserve">
     <value>Жаңа тіркелгі жасаңыз.</value>
   </data>
+  <data name="CreateNew" xml:space="preserve">
+    <value>Жасау</value>
+  </data>
   <data name="CurrentPassword" xml:space="preserve">
     <value>Ағымдағы Құпия сөз</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Жою</value>
+  </data>
+  <data name="Details" xml:space="preserve">
+    <value>Егжей</value>
+  </data>
+  <data name="DocType" xml:space="preserve">
+    <value>Құжат түрі</value>
+  </data>
+  <data name="DocTypes" xml:space="preserve">
+    <value>Құжат түрлері</value>
   </data>
   <data name="Edit" xml:space="preserve">
     <value>Өңдеу</value>
@@ -173,6 +191,18 @@
   </data>
   <data name="ManageYourAccount" xml:space="preserve">
     <value>Тіркелгіңізді басқарыңыз</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Атауы</value>
+  </data>
+  <data name="NameEN" xml:space="preserve">
+    <value>Атауы (ағылшын)</value>
+  </data>
+  <data name="NameKK" xml:space="preserve">
+    <value>Атауы (қазақ)</value>
+  </data>
+  <data name="NameRU" xml:space="preserve">
+    <value>Атауы (орыс)</value>
   </data>
   <data name="NewPassword" xml:space="preserve">
     <value>Жаңа құпия сөз</value>
