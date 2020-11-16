@@ -14,5 +14,6 @@ namespace SpaceEcoFiles.Data
         {
         }
         public DbSet<SpaceEcoFiles.Models.DocType> DocType { get; set; }
+        public DbSet<SpaceEcoFiles.Models.DocFormat> DocFormat { get; set; }
     }
 }

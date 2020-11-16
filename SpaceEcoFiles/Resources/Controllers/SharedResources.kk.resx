@@ -153,6 +153,12 @@
   <data name="Details" xml:space="preserve">
     <value>Егжей</value>
   </data>
+  <data name="DocFormat" xml:space="preserve">
+    <value>Құжат форматы</value>
+  </data>
+  <data name="DocFormats" xml:space="preserve">
+    <value>Құжаттар форматтары</value>
+  </data>
   <data name="DocType" xml:space="preserve">
     <value>Құжат түрі</value>
   </data>

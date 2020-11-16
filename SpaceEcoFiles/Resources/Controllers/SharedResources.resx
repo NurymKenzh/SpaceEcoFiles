@@ -153,6 +153,12 @@
   <data name="Details" xml:space="preserve">
     <value />
   </data>
+  <data name="DocFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="DocFormats" xml:space="preserve">
+    <value />
+  </data>
   <data name="DocType" xml:space="preserve">
     <value />
   </data>

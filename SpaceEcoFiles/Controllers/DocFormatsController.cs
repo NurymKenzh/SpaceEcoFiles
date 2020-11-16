@@ -11,22 +11,22 @@ using SpaceEcoFiles.Models;
 
 namespace SpaceEcoFiles.Controllers
 {
-    public class DocTypesController : Controller
+    public class DocFormatsController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public DocTypesController(ApplicationDbContext context)
+        public DocFormatsController(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        // GET: DocTypes
+        // GET: DocFormats
         [Authorize(Roles = "Administrator, Moderator")]
         public async Task<IActionResult> Index(string SortOrder,
             string NameFilter,
             int? PageNumber)
         {
-            var docTypes = _context.DocType
+            var docFormats = _context.DocFormat
                 .ToList();
 
             ViewBag.NameFilter = NameFilter;
@@ -35,36 +35,36 @@ namespace SpaceEcoFiles.Controllers
 
             if (!string.IsNullOrEmpty(NameFilter))
             {
-                docTypes = docTypes.Where(b => b.Name.ToLower().Contains(NameFilter.ToLower())).ToList();
+                docFormats = docFormats.Where(b => b.Name.ToLower().Contains(NameFilter.ToLower())).ToList();
             }
 
             switch (SortOrder)
             {
                 case "Name":
-                    docTypes = docTypes.OrderBy(b => b.Name).ToList();
+                    docFormats = docFormats.OrderBy(b => b.Name).ToList();
                     break;
                 case "NameDesc":
-                    docTypes = docTypes.OrderByDescending(b => b.Name).ToList();
+                    docFormats = docFormats.OrderByDescending(b => b.Name).ToList();
                     break;
                 default:
-                    docTypes = docTypes.OrderBy(b => b.Id).ToList();
+                    docFormats = docFormats.OrderBy(b => b.Id).ToList();
                     break;
             }
 
             ViewBag.SortOrder = SortOrder;
 
-            var pager = new Pager(docTypes.Count(), PageNumber);
+            var pager = new Pager(docFormats.Count(), PageNumber);
 
-            var viewModel = new DocTypeIndexPageViewModel
+            var viewModel = new DocFormatIndexPageViewModel
             {
-                Items = docTypes.Skip((pager.CurrentPage - 1) * pager.PageSize).Take(pager.PageSize),
+                Items = docFormats.Skip((pager.CurrentPage - 1) * pager.PageSize).Take(pager.PageSize),
                 Pager = pager
             };
 
             return View(viewModel);
         }
 
-        // GET: DocTypes/Details/5
+        // GET: DocFormats/Details/5
         [Authorize(Roles = "Administrator, Moderator")]
         public async Task<IActionResult> Details(int? id)
         {
@@ -73,41 +73,41 @@ namespace SpaceEcoFiles.Controllers
                 return NotFound();
             }
 
-            var docType = await _context.DocType
+            var docFormat = await _context.DocFormat
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (docType == null)
+            if (docFormat == null)
             {
                 return NotFound();
             }
 
-            return View(docType);
+            return View(docFormat);
         }
 
-        // GET: DocTypes/Create
+        // GET: DocFormats/Create
         [Authorize(Roles = "Administrator, Moderator")]
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: DocTypes/Create
+        // POST: DocFormats/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [Authorize(Roles = "Administrator, Moderator")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,NameRU,NameKK,NameEN")] DocType docType)
+        public async Task<IActionResult> Create([Bind("Id,NameRU,NameKK,NameEN")] DocFormat docFormat)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(docType);
+                _context.Add(docFormat);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(docType);
+            return View(docFormat);
         }
 
-        // GET: DocTypes/Edit/5
+        // GET: DocFormats/Edit/5
         [Authorize(Roles = "Administrator, Moderator")]
         public async Task<IActionResult> Edit(int? id)
         {
@@ -116,23 +116,23 @@ namespace SpaceEcoFiles.Controllers
                 return NotFound();
             }
 
-            var docType = await _context.DocType.FindAsync(id);
-            if (docType == null)
+            var docFormat = await _context.DocFormat.FindAsync(id);
+            if (docFormat == null)
             {
                 return NotFound();
             }
-            return View(docType);
+            return View(docFormat);
         }
 
-        // POST: DocTypes/Edit/5
+        // POST: DocFormats/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [Authorize(Roles = "Administrator, Moderator")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,NameRU,NameKK,NameEN")] DocType docType)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,NameRU,NameKK,NameEN")] DocFormat docFormat)
         {
-            if (id != docType.Id)
+            if (id != docFormat.Id)
             {
                 return NotFound();
             }
@@ -141,12 +141,12 @@ namespace SpaceEcoFiles.Controllers
             {
                 try
                 {
-                    _context.Update(docType);
+                    _context.Update(docFormat);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!DocTypeExists(docType.Id))
+                    if (!DocFormatExists(docFormat.Id))
                     {
                         return NotFound();
                     }
@@ -157,10 +157,10 @@ namespace SpaceEcoFiles.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(docType);
+            return View(docFormat);
         }
 
-        // GET: DocTypes/Delete/5
+        // GET: DocFormats/Delete/5
         [Authorize(Roles = "Administrator, Moderator")]
         public async Task<IActionResult> Delete(int? id)
         {
@@ -169,31 +169,31 @@ namespace SpaceEcoFiles.Controllers
                 return NotFound();
             }
 
-            var docType = await _context.DocType
+            var docFormat = await _context.DocFormat
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (docType == null)
+            if (docFormat == null)
             {
                 return NotFound();
             }
 
-            return View(docType);
+            return View(docFormat);
         }
 
-        // POST: DocTypes/Delete/5
+        // POST: DocFormats/Delete/5
         [Authorize(Roles = "Administrator, Moderator")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var docType = await _context.DocType.FindAsync(id);
-            _context.DocType.Remove(docType);
+            var docFormat = await _context.DocFormat.FindAsync(id);
+            _context.DocFormat.Remove(docFormat);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool DocTypeExists(int id)
+        private bool DocFormatExists(int id)
         {
-            return _context.DocType.Any(e => e.Id == id);
+            return _context.DocFormat.Any(e => e.Id == id);
         }
     }
 }

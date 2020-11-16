@@ -171,6 +171,24 @@ namespace SpaceEcoFiles.Resources.Controllers {
         /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
+        public static string DocFormat {
+            get {
+                return ResourceManager.GetString("DocFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string DocFormats {
+            get {
+                return ResourceManager.GetString("DocFormats", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
         public static string DocType {
             get {
                 return ResourceManager.GetString("DocType", resourceCulture);
