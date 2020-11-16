@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -46,6 +47,12 @@ namespace SpaceEcoFiles.Controllers
             );
 
             return LocalRedirect(returnUrl);
+        }
+
+        [Authorize(Roles = "Administrator")]
+        public ActionResult Administrator()
+        {
+            return View();
         }
     }
 }

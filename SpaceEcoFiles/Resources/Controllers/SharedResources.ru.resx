@@ -117,6 +117,12 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Administrator" xml:space="preserve">
+    <value>Администратор</value>
+  </data>
+  <data name="BackToList" xml:space="preserve">
+    <value>Назад</value>
+  </data>
   <data name="ChangePassword" xml:space="preserve">
     <value>Сменить пароль</value>
   </data>
@@ -135,8 +141,14 @@
   <data name="CurrentPassword" xml:space="preserve">
     <value>Действующий пароль</value>
   </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Редактировать</value>
+  </data>
   <data name="Email" xml:space="preserve">
     <value>Электронная почта</value>
+  </data>
+  <data name="Find" xml:space="preserve">
+    <value>Найти</value>
   </data>
   <data name="ForgotYourPassword" xml:space="preserve">
     <value>Забыли свой пароль?</value>
@@ -180,6 +192,9 @@
   <data name="RememberMe" xml:space="preserve">
     <value>Запомнить меня?</value>
   </data>
+  <data name="Roles" xml:space="preserve">
+    <value>Роли</value>
+  </data>
   <data name="Save" xml:space="preserve">
     <value>Сохранить</value>
   </data>
@@ -201,8 +216,14 @@
   <data name="UseALocalAccountToLogIn" xml:space="preserve">
     <value>Используйте локальную учетную запись для входа в систему.</value>
   </data>
+  <data name="User" xml:space="preserve">
+    <value>Пользователь</value>
+  </data>
   <data name="UserNameIsAlreadyTaken" xml:space="preserve">
     <value>Имя пользователя {0} уже занято.</value>
+  </data>
+  <data name="Users" xml:space="preserve">
+    <value>Пользователи</value>
   </data>
   <data name="YourPasswordHasBeenChanged" xml:space="preserve">
     <value>Ваш пароль был изменен.</value>

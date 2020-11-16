@@ -117,6 +117,12 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Administrator" xml:space="preserve">
+    <value>Әкімші</value>
+  </data>
+  <data name="BackToList" xml:space="preserve">
+    <value>Оралу</value>
+  </data>
   <data name="ChangePassword" xml:space="preserve">
     <value>Құпия сөзді өзгерту</value>
   </data>
@@ -135,8 +141,14 @@
   <data name="CurrentPassword" xml:space="preserve">
     <value>Ағымдағы Құпия сөз</value>
   </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Өңдеу</value>
+  </data>
   <data name="Email" xml:space="preserve">
     <value>Электрондық пошта</value>
+  </data>
+  <data name="Find" xml:space="preserve">
+    <value>Табу</value>
   </data>
   <data name="ForgotYourPassword" xml:space="preserve">
     <value>Құпия сөзіңізді ұмыттыңыз ба?</value>
@@ -180,6 +192,9 @@
   <data name="RememberMe" xml:space="preserve">
     <value>Мені есте сақтау?</value>
   </data>
+  <data name="Roles" xml:space="preserve">
+    <value>Рөлдері</value>
+  </data>
   <data name="Save" xml:space="preserve">
     <value>Сақтау</value>
   </data>
@@ -201,8 +216,14 @@
   <data name="UseALocalAccountToLogIn" xml:space="preserve">
     <value>Кіру үшін жергілікті есептік жазбаны пайдаланыңыз.</value>
   </data>
+  <data name="User" xml:space="preserve">
+    <value>Пайдаланушы</value>
+  </data>
   <data name="UserNameIsAlreadyTaken" xml:space="preserve">
     <value>{0} пайдаланушы аты алынған.</value>
+  </data>
+  <data name="Users" xml:space="preserve">
+    <value>Пайдаланушылар</value>
   </data>
   <data name="YourPasswordHasBeenChanged" xml:space="preserve">
     <value>Сіздің пароліңіз өзгертілді.</value>

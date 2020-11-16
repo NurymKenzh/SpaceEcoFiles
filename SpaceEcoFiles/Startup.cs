@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Localization;
 using SpaceEcoFiles.Data;
 using System;
 using System.Collections.Generic;
@@ -36,7 +37,10 @@ namespace SpaceEcoFiles
 
             services.AddLocalization(options => { options.ResourcesPath = "Resources"; });
 
-            services.AddMvc()
+            services.AddMvc(options =>
+            {
+                var iStrFactory = services.BuildServiceProvider().GetService<IStringLocalizerFactory>();
+            })
                 .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix,
                     options => { options.ResourcesPath = "Resources"; });
 
@@ -47,13 +51,14 @@ namespace SpaceEcoFiles
                 options.Password.RequireUppercase = false;
                 options.Password.RequiredLength = 6;
             })
+                .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
             services.AddRazorPages();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IServiceProvider serviceProvider)
         {
             if (env.IsDevelopment())
             {
@@ -97,6 +102,30 @@ namespace SpaceEcoFiles
                     pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
+
+            CreateRoles(serviceProvider).Wait();
+        }
+
+        private async Task CreateRoles(IServiceProvider serviceProvider)
+        {
+            var RoleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+            var UserManager = serviceProvider.GetRequiredService<UserManager<IdentityUser>>();
+            string[] roleNames = { "Administrator", "Moderator" };
+            IdentityResult roleResult;
+            foreach (var roleName in roleNames)
+            {
+                var roleExist = await RoleManager.RoleExistsAsync(roleName);
+                if (!roleExist)
+                {
+                    roleResult = await RoleManager.CreateAsync(new IdentityRole(roleName));
+                }
+            }
+            var userManager = serviceProvider.GetService<UserManager<IdentityUser>>();
+            IdentityUser user = userManager.Users.FirstOrDefault(u => u.Email == "n.a.k@bk.ru");
+            if (user != null)
+            {
+                await userManager.AddToRoleAsync(user, "Administrator");
+            }
         }
     }
 }
