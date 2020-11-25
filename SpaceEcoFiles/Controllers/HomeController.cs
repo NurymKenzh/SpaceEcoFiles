@@ -23,6 +23,10 @@ namespace SpaceEcoFiles.Controllers
 
         public IActionResult Index()
         {
+            if (User.IsInRole("Administrator") || User.IsInRole("Moderator"))
+            {
+                return RedirectToAction("Index", "Docs");
+            }
             return View();
         }
 
@@ -49,7 +53,7 @@ namespace SpaceEcoFiles.Controllers
             return LocalRedirect(returnUrl);
         }
 
-        [Authorize(Roles = "Administrator")]
+        [Authorize(Roles = "Administrator, Moderator")]
         public ActionResult Administrator()
         {
             return View();

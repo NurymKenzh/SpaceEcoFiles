@@ -315,31 +315,9 @@ namespace SpaceEcoFiles.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Administrator, Moderator")]
         public IActionResult Show(string FileName)
         {
-            ////var fileName = Path.Combine(_hostingEnvironment.ContentRootPath, "Files", FileName);
-            ////return new PhysicalFileResult(fileName, "image/jpeg");
-            //var fileName = Path.Combine(_hostingEnvironment.ContentRootPath, "Files", FileName);
-            //var net = new System.Net.WebClient();
-            //var data = net.DownloadData(fileName);
-            //var content = new System.IO.MemoryStream(data);
-            //var contentType = "application/octet-stream";
-            //if (Path.GetExtension(FileName).ToLower() == ".jpg" || Path.GetExtension(FileName).ToLower() == ".jpeg")
-            //{
-            //    contentType = "image/jpeg";
-            //}
-            //if (Path.GetExtension(FileName).ToLower() == ".png")
-            //{
-            //    contentType = "image/png";
-            //}
-            //if (Path.GetExtension(FileName).ToLower() == ".pdf")
-            //{
-            //    //FileStream fs = new FileStream(fileName, FileMode.Open, FileAccess.Read);
-            //    //return File(fs, "application/pdf");
-            //    return new PhysicalFileResult(fileName, "application/pdf");
-            //}
-            //return File(content, contentType, FileName);
-
             var fileName = Path.Combine(_hostingEnvironment.ContentRootPath, "Files", FileName);
             var contentType = "application/octet-stream";
             if (Path.GetExtension(FileName).ToLower() == ".jpg" || Path.GetExtension(FileName).ToLower() == ".jpeg")
