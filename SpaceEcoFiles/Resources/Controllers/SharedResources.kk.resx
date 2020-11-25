@@ -147,17 +147,26 @@
   <data name="CurrentPassword" xml:space="preserve">
     <value>Ағымдағы Құпия сөз</value>
   </data>
+  <data name="Date" xml:space="preserve">
+    <value>Күні</value>
+  </data>
   <data name="Delete" xml:space="preserve">
     <value>Жою</value>
   </data>
   <data name="Details" xml:space="preserve">
     <value>Егжей</value>
   </data>
+  <data name="Doc" xml:space="preserve">
+    <value>Құжат</value>
+  </data>
   <data name="DocFormat" xml:space="preserve">
     <value>Құжат форматы</value>
   </data>
   <data name="DocFormats" xml:space="preserve">
     <value>Құжаттар форматтары</value>
+  </data>
+  <data name="Docs" xml:space="preserve">
+    <value>Құжаттар</value>
   </data>
   <data name="DocType" xml:space="preserve">
     <value>Құжат түрі</value>
@@ -170,6 +179,12 @@
   </data>
   <data name="Email" xml:space="preserve">
     <value>Электрондық пошта</value>
+  </data>
+  <data name="English" xml:space="preserve">
+    <value>Ағылшын</value>
+  </data>
+  <data name="File" xml:space="preserve">
+    <value>Файл</value>
   </data>
   <data name="Find" xml:space="preserve">
     <value>Табу</value>
@@ -185,6 +200,9 @@
   </data>
   <data name="InvalidLoginAttempt" xml:space="preserve">
     <value>Кіру әрекеті жарамсыз.</value>
+  </data>
+  <data name="Kazakh" xml:space="preserve">
+    <value>Қазақ</value>
   </data>
   <data name="Language" xml:space="preserve">
     <value>Тіл</value>
@@ -231,6 +249,9 @@
   <data name="Roles" xml:space="preserve">
     <value>Рөлдері</value>
   </data>
+  <data name="Russian" xml:space="preserve">
+    <value>Орыс</value>
+  </data>
   <data name="Save" xml:space="preserve">
     <value>Сақтау</value>
   </data>
@@ -246,6 +267,9 @@
   <data name="ThePasswordAndConfirmationPasswordDoNotMatch" xml:space="preserve">
     <value>Құпия сөз және растау паролі сәйкес келмейді.</value>
   </data>
+  <data name="Title" xml:space="preserve">
+    <value>Тақырып</value>
+  </data>
   <data name="UpdatePassword" xml:space="preserve">
     <value>Парольді жаңартыңыз</value>
   </data>
@@ -260,6 +284,9 @@
   </data>
   <data name="Users" xml:space="preserve">
     <value>Пайдаланушылар</value>
+  </data>
+  <data name="View" xml:space="preserve">
+    <value>Көру</value>
   </data>
   <data name="YourPasswordHasBeenChanged" xml:space="preserve">
     <value>Сіздің пароліңіз өзгертілді.</value>

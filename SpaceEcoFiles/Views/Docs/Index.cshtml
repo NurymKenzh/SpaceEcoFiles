@@ -1,0 +1,167 @@
+﻿@model SpaceEcoFiles.Models.DocIndexPageViewModel
+@using System.Net
+@using SpaceEcoFiles.Controllers
+@using Microsoft.Extensions.Localization
+@inject IStringLocalizer<SharedResources> SharedLocalizer
+@{
+    ViewData["Title"] = SharedLocalizer["Docs"];
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>@SharedLocalizer["Docs"]</h1>
+
+<p>
+    <a asp-action="Create">@SharedLocalizer["Create"]</a>
+</p>
+
+
+@using (Html.BeginForm("Index", "Docs", new { SortOrder = ViewBag.SortOrdert, TitleFilter = ViewBag.TitleFilter, DateFilter = ViewBag.DateFilter, LanguageFilter = ViewBag.LanguageFilter, DocTypeIdFilter = ViewBag.DocTypeIdFilter, DocFormatIdFilter = ViewBag.DocFormatIdFilter, FileFilter = ViewBag.FileFilter }, FormMethod.Get))
+{
+    @Html.Editor("SortOrder", null, new { htmlAttributes = new { @hidden = "hidden" }, value = ViewBag.SortOrder })
+    @if (Model.Pager.EndPage > 1)
+    {
+        <ul class="pagination">
+            @if (Model.Pager.CurrentPage > 1)
+            {
+                <li>
+                    @Html.ActionLink(WebUtility.HtmlDecode("&laquo;&laquo;"), "Index",
+                        new { SortOrder = ViewBag.SortOrdert, TitleFilter = ViewBag.TitleFilter, DateFilter = ViewBag.DateFilter, LanguageFilter = ViewBag.LanguageFilter, DocTypeIdFilter = ViewBag.DocTypeIdFilter, DocFormatIdFilter = ViewBag.DocFormatIdFilter, FileFilter = ViewBag.FileFilter })
+                </li>
+                <li>
+                    @Html.ActionLink(WebUtility.HtmlDecode("&laquo;"), "Index",
+                        new { PageNumber = Model.Pager.CurrentPage - 1, SortOrder = ViewBag.SortOrdert, TitleFilter = ViewBag.TitleFilter, DateFilter = ViewBag.DateFilter, LanguageFilter = ViewBag.LanguageFilter, DocTypeIdFilter = ViewBag.DocTypeIdFilter, DocFormatIdFilter = ViewBag.DocFormatIdFilter, FileFilter = ViewBag.FileFilter })
+                </li>
+            }
+
+            @for (var page = Model.Pager.StartPage; page <= Model.Pager.EndPage; page++)
+            {
+                <li class="@(page == Model.Pager.CurrentPage ? "active" : "")">
+                    @Html.ActionLink(page.ToString(), "Index",
+                        new { PageNumber = page, SortOrder = ViewBag.SortOrdert, TitleFilter = ViewBag.TitleFilter, DateFilter = ViewBag.DateFilter, LanguageFilter = ViewBag.LanguageFilter, DocTypeIdFilter = ViewBag.DocTypeIdFilter, DocFormatIdFilter = ViewBag.DocFormatIdFilter, FileFilter = ViewBag.FileFilter })
+                </li>
+            }
+
+            @if (Model.Pager.CurrentPage < Model.Pager.TotalPages)
+            {
+                <li>
+                    @Html.ActionLink(WebUtility.HtmlDecode("&raquo;"), "Index",
+                        new { PageNumber = Model.Pager.CurrentPage + 1, SortOrder = ViewBag.SortOrdert, TitleFilter = ViewBag.TitleFilter, DateFilter = ViewBag.DateFilter, LanguageFilter = ViewBag.LanguageFilter, DocTypeIdFilter = ViewBag.DocTypeIdFilter, DocFormatIdFilter = ViewBag.DocFormatIdFilter, FileFilter = ViewBag.FileFilter })
+                </li>
+                <li>
+                    @Html.ActionLink(WebUtility.HtmlDecode("&raquo;&raquo;"), "Index",
+                        new { PageNumber = Model.Pager.TotalPages, SortOrder = ViewBag.SortOrdert, TitleFilter = ViewBag.TitleFilter, DateFilter = ViewBag.DateFilter, LanguageFilter = ViewBag.LanguageFilter, DocTypeIdFilter = ViewBag.DocTypeIdFilter, DocFormatIdFilter = ViewBag.DocFormatIdFilter, FileFilter = ViewBag.FileFilter })
+                </li>
+            }
+        </ul>
+    }
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.ActionLink(SharedLocalizer["Title"], "Index",
+                        new { SortOrder = ViewBag.TitleSort, TitleFilter = ViewBag.TitleFilter, DateFilter = ViewBag.DateFilter, LanguageFilter = ViewBag.LanguageFilter, DocTypeIdFilter = ViewBag.DocTypeIdFilter, DocFormatIdFilter = ViewBag.DocFormatIdFilter, FileFilter = ViewBag.FileFilter })
+                    <br />
+                    @Html.Editor("TitleFilter", null, new { htmlAttributes = new { @class = "form-control" }, value = "" })
+                </th>
+                <th>
+                    @Html.ActionLink(SharedLocalizer["Date"], "Index",
+                        new { SortOrder = ViewBag.DateSort, TitleFilter = ViewBag.TitleFilter, DateFilter = ViewBag.DateFilter, LanguageFilter = ViewBag.LanguageFilter, DocTypeIdFilter = ViewBag.DocTypeIdFilter, DocFormatIdFilter = ViewBag.DocFormatIdFilter, FileFilter = ViewBag.FileFilter })
+                    <br />
+                    @Html.Editor("DateFilter", null, new { htmlAttributes = new { @class = "form-control", @type = "date" }, value = "" })
+                </th>
+                <th>
+                    @Html.ActionLink(SharedLocalizer["Language"], "Index",
+                        new { SortOrder = ViewBag.LanguageSort, TitleFilter = ViewBag.TitleFilter, DateFilter = ViewBag.DateFilter, LanguageFilter = ViewBag.LanguageFilter, DocTypeIdFilter = ViewBag.DocTypeIdFilter, DocFormatIdFilter = ViewBag.DocFormatIdFilter, FileFilter = ViewBag.FileFilter })
+                    <br />
+                    @Html.DropDownList("LanguageFilter", Html.GetEnumSelectList<Language>().Select(c => { c.Text = SharedLocalizer[c.Text]; return c; }), "", new { @class = "form-control" })
+                </th>
+                <th>
+                    @Html.ActionLink(SharedLocalizer["DocType"], "Index",
+                        new { SortOrder = ViewBag.DocTypeNameSort, TitleFilter = ViewBag.TitleFilter, DateFilter = ViewBag.DateFilter, LanguageFilter = ViewBag.LanguageFilter, DocTypeIdFilter = ViewBag.DocTypeIdFilter, DocFormatIdFilter = ViewBag.DocFormatIdFilter, FileFilter = ViewBag.FileFilter })
+                    <br />
+                    @Html.DropDownList("DocTypeIdFilter", ViewBag.DocTypeId, "", new { @class = "form-control" })
+                </th>
+                <th>
+                    @Html.ActionLink(SharedLocalizer["DocFormat"], "Index",
+                        new { SortOrder = ViewBag.DocFormatNameSort, TitleFilter = ViewBag.TitleFilter, DateFilter = ViewBag.DateFilter, LanguageFilter = ViewBag.LanguageFilter, DocTypeIdFilter = ViewBag.DocTypeIdFilter, DocFormatIdFilter = ViewBag.DocFormatIdFilter, FileFilter = ViewBag.FileFilter })
+                    <br />
+                    @Html.DropDownList("DocFormatIdFilter", ViewBag.DocFormatId, "", new { @class = "form-control" })
+                </th>
+                <th>
+                    @Html.ActionLink(SharedLocalizer["File"], "Index",
+                        new { SortOrder = ViewBag.FileSort, TitleFilter = ViewBag.TitleFilter, DateFilter = ViewBag.DateFilter, LanguageFilter = ViewBag.LanguageFilter, DocTypeIdFilter = ViewBag.DocTypeIdFilter, DocFormatIdFilter = ViewBag.DocFormatIdFilter, FileFilter = ViewBag.FileFilter })
+                    <br />
+                    @Html.Editor("FileFilter", null, new { htmlAttributes = new { @class = "form-control" }, value = "" })
+                </th>
+                <th>
+                    <br />
+                    <input type="submit" value="@SharedLocalizer["Find"]" class="btn btn-primary">
+                </th>
+            </tr>
+        </thead>
+        @foreach (var item in Model.Items)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                <td>
+                    @SharedLocalizer[item.Language.ToString()]
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DocType.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DocFormat.Name)
+                </td>
+                <td>
+                    @Html.ActionLink(item.File, "Download", "Docs", new { FileName = item.File }, null)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id" asp->@SharedLocalizer["Edit"]</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">@SharedLocalizer["Details"]</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">@SharedLocalizer["Delete"]</a>
+                </td>
+            </tr>
+        }
+    </table>
+    @if (Model.Pager.EndPage > 1)
+    {
+        <ul class="pagination">
+            @if (Model.Pager.CurrentPage > 1)
+            {
+                <li>
+                    @Html.ActionLink(WebUtility.HtmlDecode("&laquo;&laquo;"), "Index",
+                        new { SortOrder = ViewBag.SortOrdert, TitleFilter = ViewBag.TitleFilter, DateFilter = ViewBag.DateFilter, LanguageFilter = ViewBag.LanguageFilter, DocTypeIdFilter = ViewBag.DocTypeIdFilter, DocFormatIdFilter = ViewBag.DocFormatIdFilter, FileFilter = ViewBag.FileFilter })
+                </li>
+                <li>
+                    @Html.ActionLink(WebUtility.HtmlDecode("&laquo;"), "Index",
+                        new { PageNumber = Model.Pager.CurrentPage - 1, SortOrder = ViewBag.SortOrdert, TitleFilter = ViewBag.TitleFilter, DateFilter = ViewBag.DateFilter, LanguageFilter = ViewBag.LanguageFilter, DocTypeIdFilter = ViewBag.DocTypeIdFilter, DocFormatIdFilter = ViewBag.DocFormatIdFilter, FileFilter = ViewBag.FileFilter })
+                </li>
+            }
+
+            @for (var page = Model.Pager.StartPage; page <= Model.Pager.EndPage; page++)
+            {
+                <li class="@(page == Model.Pager.CurrentPage ? "active" : "")">
+                    @Html.ActionLink(page.ToString(), "Index",
+                        new { PageNumber = page, SortOrder = ViewBag.SortOrdert, TitleFilter = ViewBag.TitleFilter, DateFilter = ViewBag.DateFilter, LanguageFilter = ViewBag.LanguageFilter, DocTypeIdFilter = ViewBag.DocTypeIdFilter, DocFormatIdFilter = ViewBag.DocFormatIdFilter, FileFilter = ViewBag.FileFilter })
+                </li>
+            }
+
+            @if (Model.Pager.CurrentPage < Model.Pager.TotalPages)
+            {
+                <li>
+                    @Html.ActionLink(WebUtility.HtmlDecode("&raquo;"), "Index",
+                        new { PageNumber = Model.Pager.CurrentPage + 1, SortOrder = ViewBag.SortOrdert, TitleFilter = ViewBag.TitleFilter, DateFilter = ViewBag.DateFilter, LanguageFilter = ViewBag.LanguageFilter, DocTypeIdFilter = ViewBag.DocTypeIdFilter, DocFormatIdFilter = ViewBag.DocFormatIdFilter, FileFilter = ViewBag.FileFilter })
+                </li>
+                <li>
+                    @Html.ActionLink(WebUtility.HtmlDecode("&raquo;&raquo;"), "Index",
+                        new { PageNumber = Model.Pager.TotalPages, SortOrder = ViewBag.SortOrdert, TitleFilter = ViewBag.TitleFilter, DateFilter = ViewBag.DateFilter, LanguageFilter = ViewBag.LanguageFilter, DocTypeIdFilter = ViewBag.DocTypeIdFilter, DocFormatIdFilter = ViewBag.DocFormatIdFilter, FileFilter = ViewBag.FileFilter })
+                </li>
+            }
+        </ul>
+    }
+}

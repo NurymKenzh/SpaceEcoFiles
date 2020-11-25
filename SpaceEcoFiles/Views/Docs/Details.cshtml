@@ -1,0 +1,86 @@
+﻿@model SpaceEcoFiles.Models.Doc
+@using SpaceEcoFiles.Controllers
+@using Microsoft.Extensions.Localization
+@inject IStringLocalizer<SharedResources> SharedLocalizer
+@{
+    ViewData["Title"] = SharedLocalizer["Details"];
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>@SharedLocalizer["Details"]</h1>
+
+<div>
+    <h4>@SharedLocalizer["Doc"]</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Language)
+        </dt>
+        <dd class="col-sm-10">
+            @SharedLocalizer[Model.Language.ToString()]
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.DocType)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DocType.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.DocFormat)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DocFormat.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.File)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.ActionLink(Model.File, "Download", "Docs", new { FileName = Model.File }, null)
+        </dd>
+        @if (System.IO.Path.GetExtension(Model.File).ToLower() == ".doc" || System.IO.Path.GetExtension(Model.File).ToLower() == ".docx")
+        {
+            <dt class="col-sm-2">
+                @SharedLocalizer["View"]
+            </dt>
+            <dd class="col-sm-10" style="height: 450px;">
+                <iframe src="https://view.officeapps.live.com/op/embed.aspx?src=@Context.Request.Host@Url.Action("Download", new { FileName = Model.File })" style="width: 100%; height: 100%;"></iframe>
+            </dd>
+        }
+        else if (System.IO.Path.GetExtension(Model.File).ToLower() == ".jpg"
+            || System.IO.Path.GetExtension(Model.File).ToLower() == ".jpeg"
+            || System.IO.Path.GetExtension(Model.File).ToLower() == ".png")
+        {
+            <dt class="col-sm-2">
+                @SharedLocalizer["View"]
+            </dt>
+            <dd class="col-sm-10" style="height: 450px;">
+                <img src="@Url.Action("Show", new { FileName = Model.File })" style="max-height: 100%;" />
+            </dd>
+        }
+        else if (System.IO.Path.GetExtension(Model.File).ToLower() == ".pdf")
+        {
+            <dt class="col-sm-2">
+                @SharedLocalizer["View"]
+            </dt>
+            <dd class="col-sm-10" style="height: 450px;">
+                <iframe src="@Url.Action("Show", new { FileName = Model.File })" style="width: 100%; height: 100%;"></iframe>
+            </dd>
+        }
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">@SharedLocalizer["Edit"]</a> |
+    <a asp-action="Index">@SharedLocalizer["BackToList"]</a>
+</div>
