@@ -264,6 +264,9 @@
   <data name="TheFieldIsRequired" xml:space="preserve">
     <value>{0} өрісі міндетті.</value>
   </data>
+  <data name="TheFileAlreadyExists" xml:space="preserve">
+    <value>Файл '{0}' бұрыннан бар!</value>
+  </data>
   <data name="ThePasswordAndConfirmationPasswordDoNotMatch" xml:space="preserve">
     <value>Құпия сөз және растау паролі сәйкес келмейді.</value>
   </data>

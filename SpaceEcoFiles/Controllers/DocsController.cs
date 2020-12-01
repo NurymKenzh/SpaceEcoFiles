@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Localization;
 using SpaceEcoFiles.Data;
 using SpaceEcoFiles.Models;
 
@@ -17,12 +18,15 @@ namespace SpaceEcoFiles.Controllers
     {
         private readonly ApplicationDbContext _context;
         private readonly IHostEnvironment _hostingEnvironment;
+        private readonly IStringLocalizer<SharedResources> _sharedLocalizer;
 
         public DocsController(ApplicationDbContext context,
-            IHostEnvironment hostingEnvironment)
+            IHostEnvironment hostingEnvironment,
+            IStringLocalizer<SharedResources> sharedLocalizer)
         {
             _context = context;
             _hostingEnvironment = hostingEnvironment;
+            _sharedLocalizer = sharedLocalizer;
         }
 
         // GET: Docs
@@ -177,9 +181,22 @@ namespace SpaceEcoFiles.Controllers
         [Authorize(Roles = "Administrator, Moderator")]
         public async Task<IActionResult> Create([Bind("Id,Title,Date,Language,DocTypeId,DocFormatId,FormFile")] Doc doc)
         {
+            string path = "";
+            if (doc.FormFile != null)
+            {
+                path = Path.Combine(_hostingEnvironment.ContentRootPath, "Files", doc.FormFile.FileName);
+                if (System.IO.File.Exists(path))
+                {
+                    ModelState.AddModelError("FormFile", string.Format(_sharedLocalizer["TheFileAlreadyExists"], doc.FormFile.FileName));
+                }
+            }
+            else
+            {
+                ModelState.AddModelError("FormFile", string.Format(_sharedLocalizer["TheFieldIsRequired"], _sharedLocalizer["File"]));
+            }
+
             if (ModelState.IsValid)
             {
-                string path = Path.Combine(_hostingEnvironment.ContentRootPath, "Files", doc.FormFile.FileName);
                 using (Stream fileStream = new FileStream(path, FileMode.Create))
                 {
                     await doc.FormFile.CopyToAsync(fileStream);
@@ -225,6 +242,15 @@ namespace SpaceEcoFiles.Controllers
             if (id != doc.Id)
             {
                 return NotFound();
+            }
+
+            if (doc.FormFile != null)
+            {
+                string path = Path.Combine(_hostingEnvironment.ContentRootPath, "Files", doc.FormFile.FileName);
+                if (System.IO.File.Exists(path))
+                {
+                    ModelState.AddModelError("FormFile", string.Format(_sharedLocalizer["TheFileAlreadyExists"], doc.FormFile.FileName));
+                }
             }
 
             if (ModelState.IsValid)

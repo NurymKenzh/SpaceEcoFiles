@@ -264,6 +264,9 @@
   <data name="TheFieldIsRequired" xml:space="preserve">
     <value>The {0} field is required.</value>
   </data>
+  <data name="TheFileAlreadyExists" xml:space="preserve">
+    <value>The file '{0}' already exists!</value>
+  </data>
   <data name="ThePasswordAndConfirmationPasswordDoNotMatch" xml:space="preserve">
     <value>The password and confirmation password do not match.</value>
   </data>

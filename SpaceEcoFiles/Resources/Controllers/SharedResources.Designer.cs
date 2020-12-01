@@ -504,6 +504,15 @@ namespace SpaceEcoFiles.Resources.Controllers {
         /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
+        public static string TheFileAlreadyExists {
+            get {
+                return ResourceManager.GetString("TheFileAlreadyExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
         public static string ThePasswordAndConfirmationPasswordDoNotMatch {
             get {
                 return ResourceManager.GetString("ThePasswordAndConfirmationPasswordDoNotMatch", resourceCulture);
