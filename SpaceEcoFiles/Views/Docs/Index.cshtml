@@ -9,11 +9,12 @@
 }
 
 <h1>@SharedLocalizer["Docs"]</h1>
-
-<p>
-    <a asp-action="Create">@SharedLocalizer["Create"]</a>
-</p>
-
+@if (User.IsInRole("Administrator") || User.IsInRole("Moderator"))
+{
+    <p>
+        <a asp-action="Create">@SharedLocalizer["Create"]</a>
+    </p>
+}
 
 @using (Html.BeginForm("Index", "Docs", new { SortOrder = ViewBag.SortOrdert, TitleFilter = ViewBag.TitleFilter, DateFilter = ViewBag.DateFilter, LanguageFilter = ViewBag.LanguageFilter, DocTypeIdFilter = ViewBag.DocTypeIdFilter, DocFormatIdFilter = ViewBag.DocFormatIdFilter, FileFilter = ViewBag.FileFilter }, FormMethod.Get))
 {
@@ -120,11 +121,20 @@
                 <td>
                     @Html.ActionLink(item.File, "Download", "Docs", new { FileName = item.File }, null)
                 </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.Id" asp->@SharedLocalizer["Edit"]</a> |
-                    <a asp-action="Details" asp-route-id="@item.Id">@SharedLocalizer["Details"]</a> |
-                    <a asp-action="Delete" asp-route-id="@item.Id">@SharedLocalizer["Delete"]</a>
-                </td>
+                @if (User.IsInRole("Administrator") || User.IsInRole("Moderator"))
+                {
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id" asp->@SharedLocalizer["Edit"]</a> |
+                        <a asp-action="Details" asp-route-id="@item.Id">@SharedLocalizer["Details"]</a> |
+                        <a asp-action="Delete" asp-route-id="@item.Id">@SharedLocalizer["Delete"]</a>
+                    </td>
+                }
+                else if (User.IsInRole("User"))
+                {
+                    <td>
+                        <a asp-action="Details" asp-route-id="@item.Id">@SharedLocalizer["Details"]</a>
+                    </td>
+                }
             </tr>
         }
     </table>

@@ -30,7 +30,7 @@ namespace SpaceEcoFiles.Controllers
         }
 
         // GET: Docs
-        [Authorize(Roles = "Administrator, Moderator")]
+        [Authorize(Roles = "Administrator, Moderator, User")]
         public async Task<IActionResult> Index(string SortOrder,
             string TitleFilter,
             DateTime? DateFilter,
@@ -144,7 +144,7 @@ namespace SpaceEcoFiles.Controllers
         }
 
         // GET: Docs/Details/5
-        [Authorize(Roles = "Administrator, Moderator")]
+        [Authorize(Roles = "Administrator, Moderator, User")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -341,7 +341,7 @@ namespace SpaceEcoFiles.Controllers
         }
 
         [HttpGet]
-        [Authorize(Roles = "Administrator, Moderator")]
+        [Authorize(Roles = "Administrator, Moderator, User")]
         public IActionResult Show(string FileName)
         {
             var fileName = Path.Combine(_hostingEnvironment.ContentRootPath, "Files", FileName);

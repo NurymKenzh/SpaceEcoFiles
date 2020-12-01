@@ -23,7 +23,7 @@ namespace SpaceEcoFiles.Controllers
 
         public IActionResult Index()
         {
-            if (User.IsInRole("Administrator") || User.IsInRole("Moderator"))
+            if (User.IsInRole("Administrator") || User.IsInRole("Moderator") || User.IsInRole("User"))
             {
                 return RedirectToAction("Index", "Docs");
             }
