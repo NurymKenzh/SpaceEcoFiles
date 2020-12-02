@@ -5,9 +5,7 @@
     ViewData["Title"] = SharedLocalizer["Administrator"];
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
 <h2>@SharedLocalizer["Administrator"]</h2>
-
 @if (User.IsInRole("Administrator"))
 {
     <a class="btn btn-default" asp-area="" asp-controller="Users" asp-action="Index">@SharedLocalizer["Users"]</a>
