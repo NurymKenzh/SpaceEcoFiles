@@ -129,7 +129,7 @@
                         <a asp-action="Delete" asp-route-id="@item.Id">@SharedLocalizer["Delete"]</a>
                     </td>
                 }
-                else if (User.IsInRole("User"))
+                else
                 {
                     <td>
                         <a asp-action="Details" asp-route-id="@item.Id">@SharedLocalizer["Details"]</a>

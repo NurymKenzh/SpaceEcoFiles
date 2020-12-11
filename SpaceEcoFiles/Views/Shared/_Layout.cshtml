@@ -33,7 +33,7 @@
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Administrator">@SharedLocalizer["Administrator"]</a>
                             </li>
                         }
-                        else if (User.IsInRole("User"))
+                        else if (User.Identity.IsAuthenticated)
                         {
                             <li class="nav-item ">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Docs" asp-action="Index">@SharedLocalizer["Docs"]</a>

@@ -133,7 +133,7 @@ namespace SpaceEcoFiles
         {
             var RoleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
             var UserManager = serviceProvider.GetRequiredService<UserManager<IdentityUser>>();
-            string[] roleNames = { "Administrator", "Moderator", "User" };
+            string[] roleNames = { "Administrator", "Moderator" };
             IdentityResult roleResult;
             foreach (var roleName in roleNames)
             {
