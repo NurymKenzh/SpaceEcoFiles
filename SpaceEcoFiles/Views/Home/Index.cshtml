@@ -6,33 +6,49 @@
 @{
     ViewData["Title"] = SharedLocalizer["Home"];
 }
+<style>
+    .container {
+        position: relative;
+        text-align: center;
+        /*color: white;*/
+    }
+    .top-left {
+        position: absolute;
+        top: 8px;
+        left: 16px;
+        margin: 35px;
+        color: white;
+        text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    }
+</style>
+<img src="~/images/home2.jpg" style="max-width: 100%;">
 
-@*<img src="~/images/home.png" style="height: calc(100vh - 185px); display: block; margin-left: auto; margin-right: auto; width: 50%;">*@
 @{
     var language = Context.Features.Get<IRequestCultureFeature>().RequestCulture.UICulture.Name;
 }
-
-@if (language == "en")
-{
-    <p>Center “Gharysh-Ecology” (“RC “Gharysh-Ecology”) of the National Space Agency of the Republic of Kazakhstan (NSA RK) created in 2001. Until 2012, the enterprise called Subsidiary State Enterprise (SSE) “Infracos-Ecos” RSE “Infracos” of the National Space Agency of the Republic of Kazakhstan.</p>
-    <p>In accordance with the Decree of the Government of the Republic of Kazakhstan № 1112 from 29.09.2011, “On the reorganization of a subsidiary of state enterprise “Infracos-Ecos” Republican State Enterprise “Infracos” of the National Space Agency of the Republic of Kazakhstan and on insertion changes and additions to some decisions of the Government of the Republic of Kazakhstan” RSE “Infracos-Ecos” of the National Space Agency on 14.02.2012 reorganized into the Republican state enterprise on the right of economic management “Research center “Gharysh-Ecology” of the National space agency of the Republic of Kazakhstan.</p>
-    <p>The enterprise is engaged in the implementation of applied research in the field of environmental safety of rocket and space activities on the Territory the Republic of Kazakhstan.</p>
-    <p>The main field of activity is the enterprise is organization and performance of works on the assessment, prediction and developing recommendations on reducing the negative impact of the rocket and space activities on the environment and public health of the Republic of Kazakhstan.</p>
-    <p>The enterprise is composed of the departments of environmental and health programs, geographic information systems, accredited analytical laboratory in Almaty, specialty chemical and environmental laboratories in the cities of Zhezkazgan and Baikonur.</p>
-}
-else if (language == "kk")
-{
-    <p>Қазақстан Республикасы Ұлттық ғарыш агенттігінің шаруашылық жүргізу құқығындағы «Ғарыш-Экология» ғылыми-зерттеу орталығы» («Ғарыш-Экология» ҒЗО) республикалық мемлекеттік кәсіпорны (РМК) 2001 жылы құрылған. 2012 жылға дейін кәсіпорын Қазақстан Республикасы Ұлттық ғарыш агенттігі «Инфракос» РМК «Инфракос-Экос» еншілес мемлекеттік кәсіпорны (ЕМК) деп аталды.</p>
-    <p>Қазақстан Республикасы Үкіметінің 29.09.2011 ж. № 1112 «Қазақстан Республикасы Ұлттық ғарыш агенттігінің «Инфракос» республикалық мемлекеттік кәсіпорнының «Инфракос-Экос» еншілес мемлекеттік кәсіпорнын қайта құру және Қазақстан Республикасы Үкіметінің кейбір шешімдеріне өзгертулер мен толықтырулар енгізу туралы» қаулысына сәйкесҚазақстан Республикасы Ұлттық ғарыш агенттігінің «Инфракос» РМК «Инфракос-Экос» ЕМК 14.02.2012 жылы Қазақстан Республикасы Ұлттық ғарыш агенттігінің шаруашылық жүргізу құқығындағы «Ғарыш-Экология» ғылыми-зерттеу орталығы» республикалық мемлекеттік кәсіпорны етіп қайта құрылды.</p>
-    <p>Кәсіпорын Қазақстан Республикасының аумағында ғарыштық-зымыран қызметінің экологиялық қауіпсіздігін қамтамасыз ету саласындағы қолданбалы ғылыми зерттеулерді жүргізумен айналысады.</p>
-    <p>Кәсіпорын қызметінің негізгі саласы ғарыштық-зымыран қызметінің Қазақстан Республикасының қоршаған ортасының күйі мен халқының денсаулығына тигізетін жағымсыз әсерін бағалау, болжамдау және оны азайту бойынша ұсыныстарды әзірлеу жұмыстарын ұйымдастырып және жүргізу болып табылады.</p>
-    <p>Кәсіпорынның құрамында экологиялық және медициналық бағдарламалар бөлімдері, геоақпараттық жүйелер бөлімі, Алматы қ. аккредиттелген аналитикалық зертхана, Жезқазған және Байқоңыр қалаларында мамандандырылған химия-экологиялық зертханалар бар.</p>
-}
-else
-{
-    <p><b>Республиканское государственное предприятие (РГП) на праве хозяйственного ведения «Научно-исследовательский центр «Ғарыш-Экология» («НИЦ «Ғарыш-Экология») Национального космического агентства Республики Казахстан (НКА РК)</b> создано в 2001 году. До 2012 года предприятие называлось Дочернее государственное предприятие <b>(ДГП) «Инфракос-Экос» РГП «Инфракос»</b> Национального космического агентства Республики Казахстан.</p>
-    <p>В соответствии с Постановлением Правительства Республики Казахстан <b>№ 1112</b> от 29.09.2011 года «О реорганизации дочернего государственного предприятия «Инфракос-Экос» Республиканского государственного предприятия «Инфракос» Национального космического агентства Республики Казахстан и о внесении изменений и дополнений в некоторые решения Правительства Республики Казахстан» <b>ДГП «Инфракос-Экос» РГП «Инфракос»</b> Национального космического агентства 14.02.2012 года реорганизовано в Республиканское государственное предприятие на праве хозяйственного ведения «Научно-исследовательский центр «Ғарыш-Экология» Национального космического агентства Республики Казахстан.</p>
-    <p>Предприятие занимается осуществлением прикладных научных исследований в области обеспечения экологической безопасности ракетно-космической деятельности на территории Республики Казахстан.</p>
-    <p>Основной сферой деятельности предприятия является организация и проведение работ по оценке, прогнозированию и разработке рекомендаций по снижению негативного воздействия ракетно-космической деятельности на состояние окружающей среды и здоровья населения Республики Казахстан.</p>
-    <p>Предприятие имеет в своем составе отделы экологических и медицинских программ, научно-технической информации, аккредитованную аналитическую лабораторию в г. Алматы, специализированные химико-экологические лаборатории в городах Жезказган и Байконыр.</p>
-}
+<div class="top-left">
+    @if (language == "en")
+    {
+        <p>Center “Gharysh-Ecology” (“RC “Gharysh-Ecology”) of the National Space Agency of the Republic of Kazakhstan (NSA RK) created in 2001. Until 2012, the enterprise called Subsidiary State Enterprise (SSE) “Infracos-Ecos” RSE “Infracos” of the National Space Agency of the Republic of Kazakhstan.</p>
+        <p>In accordance with the Decree of the Government of the Republic of Kazakhstan № 1112 from 29.09.2011, “On the reorganization of a subsidiary of state enterprise “Infracos-Ecos” Republican State Enterprise “Infracos” of the National Space Agency of the Republic of Kazakhstan and on insertion changes and additions to some decisions of the Government of the Republic of Kazakhstan” RSE “Infracos-Ecos” of the National Space Agency on 14.02.2012 reorganized into the Republican state enterprise on the right of economic management “Research center “Gharysh-Ecology” of the National space agency of the Republic of Kazakhstan.</p>
+        <p>The enterprise is engaged in the implementation of applied research in the field of environmental safety of rocket and space activities on the Territory the Republic of Kazakhstan.</p>
+        <p>The main field of activity is the enterprise is organization and performance of works on the assessment, prediction and developing recommendations on reducing the negative impact of the rocket and space activities on the environment and public health of the Republic of Kazakhstan.</p>
+        <p>The enterprise is composed of the departments of environmental and health programs, geographic information systems, accredited analytical laboratory in Almaty, specialty chemical and environmental laboratories in the cities of Zhezkazgan and Baikonur.</p>
+    }
+    else if (language == "kk")
+    {
+        <p>Қазақстан Республикасы Ұлттық ғарыш агенттігінің шаруашылық жүргізу құқығындағы «Ғарыш-Экология» ғылыми-зерттеу орталығы» («Ғарыш-Экология» ҒЗО) республикалық мемлекеттік кәсіпорны (РМК) 2001 жылы құрылған. 2012 жылға дейін кәсіпорын Қазақстан Республикасы Ұлттық ғарыш агенттігі «Инфракос» РМК «Инфракос-Экос» еншілес мемлекеттік кәсіпорны (ЕМК) деп аталды.</p>
+        <p>Қазақстан Республикасы Үкіметінің 29.09.2011 ж. № 1112 «Қазақстан Республикасы Ұлттық ғарыш агенттігінің «Инфракос» республикалық мемлекеттік кәсіпорнының «Инфракос-Экос» еншілес мемлекеттік кәсіпорнын қайта құру және Қазақстан Республикасы Үкіметінің кейбір шешімдеріне өзгертулер мен толықтырулар енгізу туралы» қаулысына сәйкесҚазақстан Республикасы Ұлттық ғарыш агенттігінің «Инфракос» РМК «Инфракос-Экос» ЕМК 14.02.2012 жылы Қазақстан Республикасы Ұлттық ғарыш агенттігінің шаруашылық жүргізу құқығындағы «Ғарыш-Экология» ғылыми-зерттеу орталығы» республикалық мемлекеттік кәсіпорны етіп қайта құрылды.</p>
+        <p>Кәсіпорын Қазақстан Республикасының аумағында ғарыштық-зымыран қызметінің экологиялық қауіпсіздігін қамтамасыз ету саласындағы қолданбалы ғылыми зерттеулерді жүргізумен айналысады.</p>
+        <p>Кәсіпорын қызметінің негізгі саласы ғарыштық-зымыран қызметінің Қазақстан Республикасының қоршаған ортасының күйі мен халқының денсаулығына тигізетін жағымсыз әсерін бағалау, болжамдау және оны азайту бойынша ұсыныстарды әзірлеу жұмыстарын ұйымдастырып және жүргізу болып табылады.</p>
+        <p>Кәсіпорынның құрамында экологиялық және медициналық бағдарламалар бөлімдері, геоақпараттық жүйелер бөлімі, Алматы қ. аккредиттелген аналитикалық зертхана, Жезқазған және Байқоңыр қалаларында мамандандырылған химия-экологиялық зертханалар бар.</p>
+    }
+    else
+    {
+        <p><b>Республиканское государственное предприятие (РГП) на праве хозяйственного ведения «Научно-исследовательский центр «Ғарыш-Экология» («НИЦ «Ғарыш-Экология») Национального космического агентства Республики Казахстан (НКА РК)</b> создано в 2001 году. До 2012 года предприятие называлось Дочернее государственное предприятие <b>(ДГП) «Инфракос-Экос» РГП «Инфракос»</b> Национального космического агентства Республики Казахстан.</p>
+        <p>В соответствии с Постановлением Правительства Республики Казахстан <b>№ 1112</b> от 29.09.2011 года «О реорганизации дочернего государственного предприятия «Инфракос-Экос» Республиканского государственного предприятия «Инфракос» Национального космического агентства Республики Казахстан и о внесении изменений и дополнений в некоторые решения Правительства Республики Казахстан» <b>ДГП «Инфракос-Экос» РГП «Инфракос»</b> Национального космического агентства 14.02.2012 года реорганизовано в Республиканское государственное предприятие на праве хозяйственного ведения «Научно-исследовательский центр «Ғарыш-Экология» Национального космического агентства Республики Казахстан.</p>
+        <p>Предприятие занимается осуществлением прикладных научных исследований в области обеспечения экологической безопасности ракетно-космической деятельности на территории Республики Казахстан.</p>
+        <p>Основной сферой деятельности предприятия является организация и проведение работ по оценке, прогнозированию и разработке рекомендаций по снижению негативного воздействия ракетно-космической деятельности на состояние окружающей среды и здоровья населения Республики Казахстан.</p>
+        <p>Предприятие имеет в своем составе отделы экологических и медицинских программ, научно-технической информации, аккредитованную аналитическую лабораторию в г. Алматы, специализированные химико-экологические лаборатории в городах Жезказган и Байконыр.</p>
+    }
+</div>

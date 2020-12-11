@@ -8,8 +8,8 @@
 <h2>@SharedLocalizer["Administrator"]</h2>
 @if (User.IsInRole("Administrator"))
 {
-    <a class="btn btn-default" asp-area="" asp-controller="Users" asp-action="Index">@SharedLocalizer["Users"]</a>
+    <a class="btn btn-default" asp-area="" asp-controller="Users" asp-action="Index"><b>@SharedLocalizer["Users"]</b></a>
 }
-<a class="btn btn-default" asp-area="" asp-controller="DocTypes" asp-action="Index">@SharedLocalizer["DocTypes"]</a>
-<a class="btn btn-default" asp-area="" asp-controller="DocFormats" asp-action="Index">@SharedLocalizer["DocFormats"]</a>
-<a class="btn btn-default" asp-area="" asp-controller="Docs" asp-action="Index">@SharedLocalizer["Docs"]</a>
+<a class="btn btn-default" asp-area="" asp-controller="DocTypes" asp-action="Index"><b>@SharedLocalizer["DocTypes"]</b></a>
+<a class="btn btn-default" asp-area="" asp-controller="DocFormats" asp-action="Index"><b>@SharedLocalizer["DocFormats"]</b></a>
+<a class="btn btn-default" asp-area="" asp-controller="Docs" asp-action="Index"><b>@SharedLocalizer["Docs"]</b></a>

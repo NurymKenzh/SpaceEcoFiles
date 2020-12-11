@@ -46,7 +46,7 @@
     </header>
     @if (ViewContext.RouteData.Values["Controller"]?.ToString() == "Home" && ViewContext.RouteData.Values["Action"]?.ToString() == "Administrator")
     {
-        <div class="container" style="min-height: calc(100vh - 170px); background: linear-gradient(rgba(255,255,255,.2), rgba(255,255,255,.2)), url('/images/admin.png');">
+        <div class="container" style="min-height: calc(100vh - 170px); background: linear-gradient(rgba(255,255,255,.2), rgba(255,255,255,.2)), url('/images/background.jpg');">
             <main role="main" class="pb-3">
                 @RenderBody()
             </main>
@@ -62,9 +62,7 @@
     }
     else if (ViewContext.RouteData.Values["Controller"]?.ToString() == "Home" && ViewContext.RouteData.Values["Action"]?.ToString() == "Index")
     {
-        <div class="container" style="min-height: 2823px;
-        background: linear-gradient(rgba(255,255,255,.2), rgba(255,255,255,.2)), url('/images/home.png');
-        background-repeat-y: no-repeat;">
+        <div class="container">
             <main role="main" class="pb-3">
                 @RenderBody()
             </main>
