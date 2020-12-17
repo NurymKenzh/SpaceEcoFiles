@@ -361,6 +361,17 @@ namespace SpaceEcoFiles.Controllers
         }
 
         [HttpGet]
+        public IActionResult DownloadShow(string FileName)
+        {
+            var fileName = Path.Combine(_hostingEnvironment.ContentRootPath, "Files", FileName);
+            var net = new System.Net.WebClient();
+            var data = net.DownloadData(fileName);
+            var content = new System.IO.MemoryStream(data);
+            var contentType = "application/octet-stream";
+            return File(content, contentType, FileName);
+        }
+
+        [HttpGet]
         [Authorize]
         public IActionResult Show(string FileName)
         {
