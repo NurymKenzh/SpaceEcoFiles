@@ -46,6 +46,9 @@ namespace SpaceEcoFiles.Models
         [NotMapped]
         [Display(ResourceType = typeof(Resources.Controllers.SharedResources), Name = "File")]
         public IFormFile FormFile { get; set; }
+
+        [Display(ResourceType = typeof(Resources.Controllers.SharedResources), Name = "DownloadsCount")]
+        public int DownloadsCount { get; set; }
     }
 
     public class DocIndexPageViewModel

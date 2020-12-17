@@ -50,6 +50,12 @@
         <dd class="col-sm-10">
             @Html.ActionLink(Model.File, "Download", "Docs", new { FileName = Model.File }, null)
         </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.DownloadsCount)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DownloadsCount)
+        </dd>
     </dl>
 
     <form asp-action="Delete">

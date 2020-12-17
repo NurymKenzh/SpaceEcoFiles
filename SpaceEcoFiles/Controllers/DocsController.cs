@@ -38,6 +38,7 @@ namespace SpaceEcoFiles.Controllers
             int? DocTypeIdFilter,
             int? DocFormatIdFilter,
             string FileFilter,
+            int? DownloadsCountFilter,
             int? PageNumber)
         {
             var docs = _context.Doc
@@ -51,6 +52,7 @@ namespace SpaceEcoFiles.Controllers
             ViewBag.DocTypeIdFilter = DocTypeIdFilter;
             ViewBag.DocFormatIdFilter = DocFormatIdFilter;
             ViewBag.FileFilter = FileFilter;
+            ViewBag.DownloadsCountFilter = DownloadsCountFilter;
 
             ViewBag.TitleSort = SortOrder == "Title" ? "TitleDesc" : "Title";
             ViewBag.DateSort = SortOrder == "Date" ? "DateDesc" : "Date";
@@ -58,6 +60,7 @@ namespace SpaceEcoFiles.Controllers
             ViewBag.DocTypeNameSort = SortOrder == "DocTypeName" ? "DocTypeNameDesc" : "DocTypeName";
             ViewBag.DocFormatNameSort = SortOrder == "DocFormatName" ? "DocFormatNameDesc" : "DocFormatName";
             ViewBag.FileSort = SortOrder == "File" ? "FileDesc" : "File";
+            ViewBag.DownloadsCountSort = SortOrder == "DownloadsCount" ? "DownloadsCountDesc" : "DownloadsCount";
 
             if (!string.IsNullOrEmpty(TitleFilter))
             {
@@ -82,6 +85,10 @@ namespace SpaceEcoFiles.Controllers
             if (!string.IsNullOrEmpty(FileFilter))
             {
                 docs = docs.Where(b => b.File.ToLower().Contains(FileFilter.ToLower())).ToList();
+            }
+            if (DownloadsCountFilter != null)
+            {
+                docs = docs.Where(b => b.DownloadsCount == DownloadsCountFilter).ToList();
             }
 
             switch (SortOrder)
@@ -121,6 +128,12 @@ namespace SpaceEcoFiles.Controllers
                     break;
                 case "FileDesc":
                     docs = docs.OrderByDescending(b => b.File).ToList();
+                    break;
+                case "DownloadsCount":
+                    docs = docs.OrderBy(b => b.DownloadsCount).ToList();
+                    break;
+                case "DownloadsCountDesc":
+                    docs = docs.OrderByDescending(b => b.DownloadsCount).ToList();
                     break;
                 default:
                     docs = docs.OrderByDescending(b => b.Date).ToList();
@@ -197,6 +210,7 @@ namespace SpaceEcoFiles.Controllers
 
             if (ModelState.IsValid)
             {
+                doc.DownloadsCount = 0;
                 using (Stream fileStream = new FileStream(path, FileMode.Create))
                 {
                     await doc.FormFile.CopyToAsync(fileStream);
@@ -237,7 +251,7 @@ namespace SpaceEcoFiles.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Administrator, Moderator")]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Date,Language,DocTypeId,DocFormatId,File,FormFile")] Doc doc)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Date,Language,DocTypeId,DocFormatId,File,FormFile,DownloadsCount")] Doc doc)
         {
             if (id != doc.Id)
             {
@@ -259,6 +273,7 @@ namespace SpaceEcoFiles.Controllers
                 {
                     if (doc.FormFile != null)
                     {
+                        doc.DownloadsCount = 0;
                         Doc _doc = await _context.Doc.AsNoTracking().FirstOrDefaultAsync(d => d.Id == doc.Id);
                         string path = Path.Combine(_hostingEnvironment.ContentRootPath, "Files", _doc.File);
                         System.IO.File.Delete(path);
@@ -332,6 +347,11 @@ namespace SpaceEcoFiles.Controllers
         [HttpGet]
         public IActionResult Download(string FileName)
         {
+            var doc = _context.Doc.FirstOrDefault(d => d.File == FileName);
+            doc.DownloadsCount++;
+            _context.Update(doc);
+            _context.SaveChanges();
+
             var fileName = Path.Combine(_hostingEnvironment.ContentRootPath, "Files", FileName);
             var net = new System.Net.WebClient();
             var data = net.DownloadData(fileName);

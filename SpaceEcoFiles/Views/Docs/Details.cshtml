@@ -78,6 +78,12 @@
                 <iframe src="@Url.Action("Show", new { FileName = Model.File })" style="width: 100%; height: 100%;"></iframe>
             </dd>
         }
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.DownloadsCount)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DownloadsCount)
+        </dd>
     </dl>
 </div>
 @if (User.IsInRole("Administrator") || User.IsInRole("Moderator"))

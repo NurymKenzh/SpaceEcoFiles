@@ -174,6 +174,9 @@
   <data name="DocTypes" xml:space="preserve">
     <value>Құжат түрлері</value>
   </data>
+  <data name="DownloadsCount" xml:space="preserve">
+    <value>Жүктеулер саны</value>
+  </data>
   <data name="Edit" xml:space="preserve">
     <value>Өңдеу</value>
   </data>
