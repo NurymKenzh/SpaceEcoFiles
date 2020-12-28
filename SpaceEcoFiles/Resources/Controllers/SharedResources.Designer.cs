@@ -234,6 +234,15 @@ namespace SpaceEcoFiles.Resources.Controllers {
         /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
+        public static string Download {
+            get {
+                return ResourceManager.GetString("Download", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
         public static string DownloadsCount {
             get {
                 return ResourceManager.GetString("DownloadsCount", resourceCulture);
