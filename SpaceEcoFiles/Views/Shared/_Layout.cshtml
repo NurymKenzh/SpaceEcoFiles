@@ -62,16 +62,16 @@
     }
     else if (ViewContext.RouteData.Values["Controller"]?.ToString() == "Home" && ViewContext.RouteData.Values["Action"]?.ToString() == "Index")
     {
-        @*<div class="container">
-            <main role="main" class="pb-3">
-                @RenderBody()
-            </main>
-        </div>*@
-        <div class="container" style="min-height: calc(100vh - 195px); background: linear-gradient(rgba(255,255,255,.2), rgba(255,255,255,.2)), url('/images/home3.jpeg');">
+        <div class="container">
             <main role="main" class="pb-3">
                 @RenderBody()
             </main>
         </div>
+        @*<div class="container" style="min-height: calc(100vh - 195px); background: linear-gradient(rgba(255,255,255,.2), rgba(255,255,255,.2)), url('/images/home3.jpeg');">
+            <main role="main" class="pb-3">
+                @RenderBody()
+            </main>
+        </div>*@
     }
 
     <footer class="border-top footer text-muted">
